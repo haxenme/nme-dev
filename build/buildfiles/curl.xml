@@ -1,0 +1,172 @@
+<xml>
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<section if="curl_ssl">
+   <set name="OBJ_EXT" value="${OBJ_EXT}-ssl" />
+   <set name="SSLEXTRA" value="_ssl" />
+</section>
+
+<files id="curl" >
+   <compilerflag value="-I." />
+   <compilerflag value="-Iinclude" />
+   <compilerflag value="-I../../../include" />
+   <compilerflag value="-Ilib" />
+
+   <compilerflag value="-DCURL_STATICLIB" if="windows"/>
+   <compilerflag value="-DWIN32" if="windows"/>
+   <compilerflag value="-DALLOW_MSVC6_WITHOUT_PSDK" if="windows"/>
+
+   <compilerflag value="-DHAVE_CONFIG_H" unless="windows"/>
+   <compilerflag value="-DCURL_STATICLIB" unless="windows"/>
+
+   <compilerflag value="-DFD_SETSIZE=64" if="blackberry"/>
+   <compilerflag value="-DUSE_AXTLS=1" if="curl_ssl" />
+
+   <section if="unused" >
+      <file name="lib/curl_rtmp.c"/>
+      <file name="lib/curl_sspi.c"/>
+      <file name="lib/gtls.c"/>
+      <file name="lib/hostares.c"/>
+      <file name="lib/http_negotiate.c"/>
+      <file name="lib/http_negotiate_sspi.c"/>
+      <file name="lib/http_ntlm.c"/>
+      <file name="lib/md4.c"/>
+      <file name="lib/memdebug.c"/>
+      <file name="lib/nss.c"/>
+      <file name="lib/nwlib.c"/>
+      <file name="lib/nwos.c"/>
+      <file name="lib/security.c"/>
+      <file name="lib/socks_gssapi.c"/>
+      <file name="lib/socks_sspi.c"/>
+      <file name="lib/ssh.c"/>
+      <file name="lib/ssluse.c"/>
+      <file name="lib/strdup.c"/>
+      <file name="lib/strtoofft.c"/>
+      <file name="lib/polarssl.c"/>
+      <file name="lib/qssl.c"/>
+   </section>
+
+   <section if="windows">
+     <file name="lib/hostthre.c"/>
+     <file name="lib/strtok.c"/>
+     <file name="lib/hostasyn.c"/>
+      <file name="lib/curl_threads.c"/>
+   </section>
+
+   <file name="lib/base64.c"/>
+   <file name="lib/connect.c"/>
+   <file name="lib/content_encoding.c"/>
+   <file name="lib/cookie.c"/>
+   <file name="lib/curl_addrinfo.c"/>
+   <file name="lib/curl_fnmatch.c"/>
+   <file name="lib/curl_gethostname.c"/>
+   <file name="lib/curl_memrchr.c"/>
+   <file name="lib/curl_rand.c"/>
+   <file name="lib/dict.c"/>
+   <file name="lib/easy.c"/>
+   <file name="lib/escape.c"/>
+   <file name="lib/file.c"/>
+   <file name="lib/fileinfo.c"/>
+   <file name="lib/formdata.c"/>
+   <file name="lib/ftp.c"/>
+   <file name="lib/ftplistparser.c"/>
+   <file name="lib/getenv.c"/>
+   <file name="lib/getinfo.c"/>
+   <file name="lib/gopher.c"/>
+   <file name="lib/hash.c"/>
+   <file name="lib/hmac.c"/>
+   <file name="lib/hostip.c"/>
+   <file name="lib/hostip4.c"/>
+   <file name="lib/hostip6.c"/>
+   <file name="lib/hostsyn.c"/>
+   <file name="lib/http.c"/>
+   <file name="lib/http_chunks.c"/>
+   <file name="lib/http_digest.c"/>
+   <file name="lib/if2ip.c"/>
+   <file name="lib/imap.c"/>
+   <section if="windows"> <!-- todo - check? -->
+      <file name="lib/idn_win32.c" if="windows"/>
+      <file name="lib/inet_ntop.c"/>
+      <file name="lib/inet_pton.c"/>
+      <file name="lib/krb4.c"/>
+      <file name="lib/krb5.c"/>
+      <file name="lib/ldap.c"/>
+      <file name="lib/openldap.c"/>
+   </section>
+   <file name="lib/llist.c"/>
+   <file name="lib/md5.c"/>
+   <file name="lib/mprintf.c"/>
+   <file name="lib/multi.c"/>
+   <file name="lib/netrc.c"/>
+   <file name="lib/nonblock.c"/>
+   <file name="lib/parsedate.c"/>
+   <file name="lib/pingpong.c"/>
+   <file name="lib/pop3.c"/>
+   <file name="lib/progress.c"/>
+   <file name="lib/rawstr.c"/>
+   <file name="lib/rtsp.c"/>
+   <file name="lib/select.c"/>
+   <file name="lib/sendf.c"/>
+   <file name="lib/share.c"/>
+   <file name="lib/slist.c"/>
+   <file name="lib/smtp.c"/>
+   <file name="lib/socks.c"/>
+   <file name="lib/speedcheck.c"/>
+   <file name="lib/splay.c"/>
+   <file name="lib/sslgen.c"/>
+   <file name="lib/strequal.c"/>
+   <file name="lib/strerror.c"/>
+   <file name="lib/telnet.c"/>
+   <file name="lib/tftp.c"/>
+   <file name="lib/timeval.c"/>
+   <file name="lib/transfer.c"/>
+   <file name="lib/url.c"/>
+   <file name="lib/version.c"/>
+   <file name="lib/warnless.c"/>
+   <file name="lib/wildcard.c"/>
+
+   <section if="curl_ssl" >
+      <compilerflag value="-IaxTLS/crypto" />
+      <compilerflag value="-IaxTLS/ssl" />
+      <compilerflag value="-IaxTLS/config" />
+
+      <file name="lib/axtls.c"/>
+      <file name="axTLS/crypto/aes.c" />
+      <file name="axTLS/crypto/bigint.c" />
+      <file name="axTLS/crypto/crypto_misc.c" />
+      <file name="axTLS/crypto/hmac.c" />
+      <file name="axTLS/crypto/md2.c" />
+      <file name="axTLS/crypto/md5.c" />
+      <file name="axTLS/crypto/rc4.c" />
+      <file name="axTLS/crypto/rsa.c" />
+      <file name="axTLS/crypto/sha1.c" />
+      <file name="axTLS/ssl/asn1.c" />
+      <!-- <file name="axTLS/ssl/gen_cert.c" /> -->
+      <file name="axTLS/ssl/loader.c" />
+      <file name="axTLS/ssl/openssl.c" />
+      <file name="axTLS/ssl/os_port.c" />
+      <file name="axTLS/ssl/p12.c" />
+      <file name="axTLS/ssl/tls1.c" />
+      <file name="axTLS/ssl/tls1_clnt.c" />
+      <file name="axTLS/ssl/tls1_svr.c" />
+      <file name="axTLS/ssl/x509.c" />
+   </section>
+
+</files>
+
+
+
+<target id="default" output="${LIBPREFIX}curl${SSLEXTRA}${DBG}${LIBEXTRA}" tool="linker" toolid="static_link">
+  <files id="curl"/>
+  <outdir name="../../../lib/${BINDIR}"/>
+</target>
+
+
+</xml>
+
+
+
+
+
+

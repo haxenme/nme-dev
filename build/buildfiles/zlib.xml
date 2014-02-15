@@ -1,0 +1,29 @@
+<xml>
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<files id="zlib" >
+  <file name="adler32.c"/>
+  <file name="crc32.c"/>
+  <file name="infback.c"/>
+  <file name="inflate.c"/>
+  <file name="uncompr.c"/>
+  <file name="compress.c"/>
+  <file name="deflate.c"/>
+  <file name="gzio.c"/>
+  <file name="inffast.c"/>
+  <file name="inftrees.c"/>
+  <file name="trees.c"/>
+  <file name="zutil.c"/>
+</files>
+
+
+
+<target id="default" output="${LIBPREFIX}z${DBG}${LIBEXTRA}" tool="linker" toolid="static_link">
+  <files id="zlib"/>
+  <outdir name="../../../lib/${BINDIR}"/>
+</target>
+
+
+</xml>
+

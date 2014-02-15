@@ -1,0 +1,65 @@
+<xml>
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<files id="jpeg" >
+   <compilerflag value="-I../../../include" />
+   <file name="jcapimin.c"/>
+   <file name="jcapistd.c"/>
+   <file name="jctrans.c"/>
+   <file name="jcparam.c"/>
+   <file name="jdatadst.c"/>
+   <file name="jcinit.c"/>
+   <file name="jcmaster.c"/>
+   <file name="jcmarker.c"/>
+   <file name="jcmainct.c"/>
+   <file name="jcprepct.c"/>
+   <file name="jccoefct.c"/>
+   <file name="jccolor.c"/>
+   <file name="jcsample.c"/>
+   <file name="jchuff.c"/>
+   <file name="jcphuff.c"/>
+   <file name="jcdctmgr.c"/>
+   <file name="jfdctfst.c"/>
+   <file name="jfdctflt.c"/>
+   <file name="jfdctint.c"/>
+   <file name="jdapimin.c"/>
+   <file name="jdapistd.c"/>
+   <file name="jdtrans.c"/>
+   <file name="jdatasrc.c"/>
+   <file name="jdmaster.c"/>
+   <file name="jdinput.c"/>
+   <file name="jdmarker.c"/>
+   <file name="jdhuff.c"/>
+   <file name="jdphuff.c"/>
+   <file name="jdmainct.c"/>
+   <file name="jdcoefct.c"/>
+   <file name="jdpostct.c"/>
+   <file name="jddctmgr.c"/>
+   <file name="jidctfst.c"/>
+   <file name="jidctflt.c"/>
+   <file name="jidctint.c"/>
+   <file name="jidctred.c"/>
+   <file name="jdsample.c"/>
+   <file name="jdcolor.c"/>
+   <file name="jquant1.c"/>
+   <file name="jquant2.c"/>
+   <file name="jdmerge.c"/>
+   <file name="jcomapi.c"/>
+   <file name="jutils.c"/>
+   <file name="jerror.c"/>
+   <file name="jmemmgr.c"/>
+   <file name="jmemnobs.c"/>
+</files>
+
+
+
+<target id="default" output="${LIBPREFIX}jpeg${DBG}${LIBEXTRA}" tool="linker" toolid="static_link">
+  <files id="jpeg"/>
+  <outdir name="../../../lib/${BINDIR}"/>
+</target>
+
+
+</xml>
+
+

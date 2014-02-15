@@ -1,0 +1,119 @@
+<xml>
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<files id="sdl2_mixer" >
+   <compilerflag value="-Iinclude" />
+   <compilerflag value="-Itimidity" />
+   <compilerflag value="-Inative_midi" />
+   <compilerflag value="-I../../../include/SDL2" />
+   <compilerflag value="-I../../../include" />
+   <compilerflag value="-DHAVE_LIBC" />
+   <compilerflag value="-DOGG_MUSIC" />
+   <compilerflag value="-DMID_MUSIC" />
+   <compilerflag value="-DMODPLUG_MUSIC" />
+   <compilerflag value="-DWAV_MUSIC" />
+   <compilerflag value="-DUSE_NATIVE_MIDI" unless="linux" />
+
+   <file name="effect_position.c"  />
+   <file name="effect_stereoreverse.c" />
+   <file name="music_ogg.c" />
+   <file name="dynamic_ogg.c" />
+   <file name="dynamic_modplug.c" />
+   <file name="music_modplug.c" />
+   <file name="load_ogg.c" />
+   <file name="effects_internal.c" />
+   <file name="load_aiff.c" />
+   <file name="load_voc.c" />
+   <file name="mixer.c" />
+   <file name="music.c" />
+   <file name="wavestream.c" />
+
+   <!--
+   <file name="music_cmd.c" />
+   <file name="dynamic_mp3.c" />
+   -->
+
+   <section if="timidity" >
+      <file name="timidity/common.c" />
+      <file name="timidity/ctrlmode.c" />
+      <file name="timidity/filter.c" />
+      <file name="timidity/instrum.c" />
+      <file name="timidity/mix.c" />
+      <file name="timidity/output.c" />
+      <file name="timidity/playmidi.c" />
+      <file name="timidity/readmidi.c" />
+      <file name="timidity/resample.c" />
+      <file name="timidity/sdl_a.c" />
+      <file name="timidity/sdl_c.c" />
+      <file name="timidity/tables.c" />
+      <file name="timidity/timidity.c" />
+   </section>
+
+   <file name="native_midi/native_midi_common.c" unless="linux"  />
+   <file name="native_midi/native_midi_macosx.c" if="macos"  />
+   <file name="native_midi/native_midi_win32.c" if="windows"  />
+
+   <section if="mikmod" >
+      <compilerflag value="-Iexternal/libmikmod-3.1.12/include" />
+      <file name="external/libmikmod-3.1.12/playercode/mdreg.c" />
+      <file name="external/libmikmod-3.1.12/playercode/mdriver.c" />
+      <file name="external/libmikmod-3.1.12/playercode/mdulaw.c" />
+      <file name="external/libmikmod-3.1.12/playercode/mloader.c" />
+      <file name="external/libmikmod-3.1.12/playercode/mlreg.c" />
+      <file name="external/libmikmod-3.1.12/playercode/mlutil.c" />
+      <file name="external/libmikmod-3.1.12/playercode/mplayer.c" />
+      <file name="external/libmikmod-3.1.12/playercode/munitrk.c" />
+      <file name="external/libmikmod-3.1.12/playercode/mwav.c" />
+      <file name="external/libmikmod-3.1.12/playercode/npertab.c" />
+      <file name="external/libmikmod-3.1.12/playercode/sloader.c" />
+      <file name="external/libmikmod-3.1.12/playercode/virtch.c" />
+      <file name="external/libmikmod-3.1.12/playercode/virtch2.c" />
+      <file name="external/libmikmod-3.1.12/playercode/virtch_common.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_669.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_amf.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_dsm.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_far.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_gdm.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_imf.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_it.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_m15.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_med.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_mod.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_mtm.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_okt.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_s3m.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_stm.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_stx.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_ult.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_uni.c" />
+      <file name="external/libmikmod-3.1.12/loaders/load_xm.c" />
+
+      <file name="external/libmikmod-3.1.12/mmio/mmalloc.c"  />
+      <file name="external/libmikmod-3.1.12/mmio/mmerror.c"  />
+      <file name="external/libmikmod-3.1.12/mmio/mmio.c"  />
+
+      <file name="external/libmikmod-3.1.12/drivers/drv_ds.c" if="windows" />
+      <file name="external/libmikmod-3.1.12/drivers/drv_wav.c" />
+      <file name="external/libmikmod-3.1.12/drivers/drv_nos.c" />
+
+     <file name="external/libmikmod-3.1.12/posix/strcasecmp.c" if="windows" />
+   </section>
+
+
+</files>
+
+
+
+<target id="default" output="${LIBPREFIX}SDL2_mixer${DBG}${LIBEXTRA}" tool="linker" toolid="static_link">
+  <files id="sdl2_mixer"/>
+  <outdir name="../../../lib/${BINDIR}"/>
+</target>
+
+
+</xml>
+
+
+
+
+

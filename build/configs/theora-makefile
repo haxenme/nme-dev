@@ -1,0 +1,19 @@
+
+THEORA_SRC := \
+        analyze.c apiwrapper.c bitpack.c decapiwrapper.c decinfo.c \
+        decode.c dequant.c fdct.c fragment.c huffdec.c huffenc.c \
+        idct.c info.c internal.c mathops.c mcenc.c quant.c rate.c state.c tokenize.c \
+        theoraplay.c
+
+
+THEORA_OBJS := $(THEORA_SRC:%.c=%$(SS_OBJEXT))
+
+libtheora$(SS_LIBEXT):$(THEORA_OBJS)
+	$(SS_CREATELIB)$@ $(THEORA_OBJS)
+
+%$(SS_OBJEXT):lib/%.c
+	$(SS_CC) $< -c $(SS_OBJOUT)$@ -Iinclude -Ilib -I../../include
+
+clean:
+	rm -f $(THEORA_OBJS)
+

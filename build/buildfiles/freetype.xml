@@ -1,0 +1,59 @@
+<xml>
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<files id="freetype" >
+   <compilerflag value="-Iinclude" />
+   <compilerflag value="-DFT2_BUILD_LIBRARY" />
+   <compilerflag value="-DDARWIN_NO_CARBON" />
+
+      <file name="src/autofit/autofit.c"/>
+      <file name="src/bdf/bdf.c"/>
+      <file name="src/cff/cff.c"/>
+      <file name="src/base/ftbase.c"/>
+      <file name="src/base/ftbitmap.c"/>
+      <file name="src/cache/ftcache.c"/>
+      <file name="src/base/ftfstype.c"/>
+      <file name="src/base/ftgasp.c"/>
+      <file name="src/base/ftglyph.c"/>
+      <file name="src/gzip/ftgzip.c"/>
+      <file name="src/base/ftinit.c"/>
+      <file name="src/lzw/ftlzw.c"/>
+      <file name="src/base/ftstroke.c"/>
+      <file name="src/base/ftsystem.c"/>
+      <file name="src/smooth/smooth.c"/>
+      <file name="src/base/ftbbox.c"/>
+      <file name="src/base/ftmm.c"/>
+      <file name="src/base/ftpfr.c"/>
+      <file name="src/base/ftsynth.c"/>
+      <file name="src/base/fttype1.c"/>
+      <file name="src/base/ftwinfnt.c"/>
+      <file name="src/pcf/pcf.c"/>
+      <file name="src/pfr/pfr.c"/>
+      <file name="src/psaux/psaux.c"/>
+      <file name="src/pshinter/pshinter.c"/>
+      <file name="src/psnames/psmodule.c"/>
+      <file name="src/raster/raster.c"/>
+      <file name="src/sfnt/sfnt.c"/>
+      <file name="src/truetype/truetype.c"/>
+      <file name="src/type1/type1.c"/>
+      <file name="src/cid/type1cid.c"/>
+      <file name="src/type42/type42.c"/>
+      <file name="src/winfonts/winfnt.c"/>
+
+</files>
+
+
+
+<target id="default" output="${LIBPREFIX}freetype${DBG}${LIBEXTRA}" tool="linker" toolid="static_link">
+  <files id="freetype"/>
+  <outdir name="../../../lib/${BINDIR}"/>
+</target>
+
+
+</xml>
+
+
+
+
+

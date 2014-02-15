@@ -1,0 +1,53 @@
+<xml>
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<files id="modplug" >
+   <compilerflag value="-Isrc/libmodplug" />
+   <compilerflag value="-Isrc" />
+   <compilerflag value="-DHAVE_CONFIG_H" />
+   <file name="src/modplug.cpp" />
+   <file name="src/sndmix.cpp" />
+   <file name="src/load_med.cpp" />
+   <file name="src/load_mdl.cpp" />
+   <file name="src/load_dmf.cpp" />
+   <file name="src/load_it.cpp" />
+   <file name="src/load_ams.cpp" />
+   <file name="src/load_abc.cpp" />
+   <file name="src/load_s3m.cpp" />
+   <file name="src/sndfile.cpp" />
+   <file name="src/load_669.cpp" />
+   <file name="src/load_dsm.cpp" />
+   <file name="src/load_okt.cpp" />
+   <file name="src/load_mtm.cpp" />
+   <file name="src/load_far.cpp" />
+   <file name="src/load_amf.cpp" />
+   <file name="src/load_mt2.cpp" />
+   <file name="src/load_umx.cpp" />
+   <file name="src/mmcmp.cpp" />
+   <file name="src/snd_fx.cpp" />
+   <file name="src/load_stm.cpp" />
+   <file name="src/load_mid.cpp" />
+   <file name="src/fastmix.cpp" />
+   <file name="src/load_dbm.cpp" />
+   <file name="src/load_ptm.cpp" />
+   <file name="src/load_xm.cpp" />
+   <file name="src/load_wav.cpp" />
+   <file name="src/load_ult.cpp" />
+   <file name="src/load_pat.cpp" />
+   <file name="src/load_psm.cpp" />
+   <file name="src/snd_flt.cpp" />
+   <file name="src/load_mod.cpp" />
+   <file name="src/snd_dsp.cpp" />
+</files>
+
+
+
+<target id="default" output="${LIBPREFIX}modplug${DBG}${LIBEXTRA}" tool="linker" toolid="static_link">
+  <files id="modplug"/>
+  <outdir name="../../../lib/${BINDIR}"/>
+</target>
+
+
+</xml>
+

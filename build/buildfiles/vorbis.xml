@@ -1,0 +1,46 @@
+<xml>
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<files id="vorbis" >
+   <compilerflag value="-Iinclude" />
+   <compilerflag value="-Ilib" />
+   <compilerflag value="-I../../../include" />
+   <file name="lib/mdct.c"/>
+   <file name="lib/smallft.c"/>
+   <file name="lib/block.c"/>
+   <file name="lib/envelope.c"/>
+   <file name="lib/window.c"/>
+   <file name="lib/lsp.c"/>
+   <file name="lib/lpc.c"/>
+   <file name="lib/analysis.c"/>
+   <file name="lib/synthesis.c"/>
+   <file name="lib/psy.c"/>
+   <file name="lib/info.c"/>
+   <file name="lib/floor1.c"/>
+   <file name="lib/floor0.c"/>
+   <file name="lib/res0.c"/>
+   <file name="lib/mapping0.c"/>
+   <file name="lib/registry.c"/>
+   <file name="lib/codebook.c"/>
+   <file name="lib/sharedbook.c"/>
+   <!--<file name="lib/lookup.c"/>-->
+   <file name="lib/bitrate.c"/>
+   <file name="lib/vorbisfile.c"/>
+   <file name="lib/vorbisenc.c"/>
+
+
+</files>
+
+
+
+<target id="default" output="${LIBPREFIX}vorbis${DBG}${LIBEXTRA}" tool="linker" toolid="static_link">
+  <files id="vorbis"/>
+  <outdir name="../../../lib/${BINDIR}"/>
+</target>
+
+
+</xml>
+
+
+

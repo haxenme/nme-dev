@@ -1,0 +1,211 @@
+<xml>
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<files id="sdl2" >
+   <compilerflag value="-Iinclude" />
+   <compilerflag value="-Ilib" />
+   <compilerflag value="-I../../../include" />
+   <compilerflag value="-DHAVE_LIBC" />
+
+   <section if="linux">
+      <file name="src/joystick/linux/SDL_sysjoystick.c" />
+      <file name="src/audio/dsp/SDL_dspaudio.c" />
+      <file name="src/haptic/linux/SDL_syshaptic.c" />
+      <file name="src/joystick/SDL_gamecontroller.c" />
+      <file name="src/joystick/SDL_joystick.c" />
+      <file name="src/video/x11/SDL_x11video.c" />
+      <file name="src/video/x11/SDL_x11opengles.c" />
+      <file name="src/video/x11/SDL_x11dyn.c" />
+      <file name="src/video/x11/SDL_x11video.c" />
+      <file name="src/video/x11/SDL_x11events.c" />
+      <file name="src/video/x11/SDL_x11window.c" />
+      <file name="src/video/x11/SDL_x11messagebox.c" />
+      <file name="src/video/x11/SDL_x11opengl.c" />
+      <file name="src/video/x11/SDL_x11modes.c" />
+      <file name="src/video/x11/SDL_x11mouse.c" />
+      <file name="src/video/x11/SDL_x11clipboard.c" />
+      <file name="src/video/x11/SDL_x11xinput2.c" />
+      <file name="src/video/x11/SDL_x11keyboard.c" />
+      <file name="src/video/x11/imKStoUCS.c" />
+      <file name="src/video/x11/SDL_x11touch.c" />
+      <file name="src/video/x11/edid-parse.c" />
+      <file name="src/video/x11/SDL_x11shape.c" />
+      <file name="src/video/x11/SDL_x11framebuffer.c" />
+      <file name="src/audio/pulseaudio/SDL_pulseaudio.c" />
+      <file name="src/audio/alsa/SDL_alsa_audio.c" />
+      <file name="src/audio/SDL_audiodev.c"/>
+      <file name="src/audio/SDL_audiocvt.c"/>
+      <file name="src/audio/sndio/SDL_sndioaudio.c"/>
+      <file name="src/audio/SDL_audiotypecvt.c"/>
+   </section>
+
+   <section if="windows">
+      <compilerflag value="-DSDL_JOYSTICK_DINPUT" />
+      <file name="src/joystick/SDL_joystick.c" />
+      <file name="src/joystick/SDL_gamecontroller.c" />
+      <file name="src/joystick/windows/SDL_dxjoystick.c"/>
+      <file name="src/joystick/windows/SDL_mmjoystick.c"/>
+      <file name="src/haptic/windows/SDL_syshaptic.c"/>
+      <file name="src/loadso/windows/SDL_sysloadso.c"/>
+      <file name="src/thread/windows/SDL_sysmutex.c"/>
+      <file name="src/power/windows/SDL_syspower.c"/>
+      <file name="src/thread/windows/SDL_syssem.c"/>
+      <file name="src/thread/windows/SDL_systhread.c"/>
+      <file name="src/thread/windows/SDL_systls.c"/>
+      <file name="src/timer/windows/SDL_systimer.c"/>
+      <file name="src/core/windows/SDL_windows.c"/>
+      <file name="src/video/windows/SDL_windowsclipboard.c"/>
+      <file name="src/video/windows/SDL_windowsevents.c"/>
+      <file name="src/video/windows/SDL_windowsframebuffer.c"/>
+      <file name="src/video/windows/SDL_windowskeyboard.c"/>
+      <file name="src/video/windows/SDL_windowsmessagebox.c"/>
+      <file name="src/video/windows/SDL_windowsmodes.c"/>
+      <file name="src/video/windows/SDL_windowsmouse.c"/>
+      <file name="src/video/windows/SDL_windowsopengl.c"/>
+      <file name="src/video/windows/SDL_windowsshape.c"/>
+      <file name="src/video/windows/SDL_windowsvideo.c"/>
+      <file name="src/video/windows/SDL_windowswindow.c"/>
+      <file name="src/audio/winmm/SDL_winmm.c"/>
+      <file name="src/audio/xaudio2/SDL_xaudio2.c"/>
+      <file name="src/render/direct3d/SDL_render_d3d.c"/>
+      <file name="src/audio/directsound/SDL_directsound.c"/>
+   </section>
+
+   <section unless="windows">
+      <file name="src/thread/pthread/SDL_syscond.c" />
+      <file name="src/thread/pthread/SDL_sysmutex.c" />
+      <file name="src/thread/pthread/SDL_syssem.c" />
+      <file name="src/thread/pthread/SDL_systhread.c" />
+      <file name="src/thread/pthread/SDL_systls.c" />
+      <file name="src/timer/unix/SDL_systimer.c" />
+      <file name="src/loadso/dlopen/SDL_sysloadso.c" />
+   </section>
+
+   <section if="macos">
+      <file name="src/video/cocoa/SDL_cocoaclipboard.m" />
+      <file name="src/video/cocoa/SDL_cocoaevents.m" />
+      <file name="src/video/cocoa/SDL_cocoakeyboard.m" />
+      <file name="src/video/cocoa/SDL_cocoamessagebox.m" />
+      <file name="src/video/cocoa/SDL_cocoamodes.m" />
+      <file name="src/video/cocoa/SDL_cocoamouse.m" />
+      <file name="src/video/cocoa/SDL_cocoamousetap.m" />
+      <file name="src/video/cocoa/SDL_cocoaopengl.m" />
+      <file name="src/video/cocoa/SDL_cocoashape.m" />
+      <file name="src/video/cocoa/SDL_cocoavideo.m" />
+      <file name="src/video/cocoa/SDL_cocoawindow.m" />
+      <file name="src/file/cocoa/SDL_rwopsbundlesupport.m" />
+      <file name="src/haptic/darwin/SDL_syshaptic.c" />
+      <file name="src/joystick/darwin/SDL_sysjoystick.c" />
+      <file name="src/joystick/SDL_gamecontroller.c" />
+      <file name="src/joystick/SDL_joystick.c" />
+      <file name="src/audio/coreaudio/SDL_coreaudio.c" />
+   </section>
+
+
+      <file name="src/libm/e_atan2.c"/>
+      <file name="src/libm/e_log.c"/>
+      <file name="src/libm/e_pow.c"/>
+      <file name="src/libm/e_rem_pio2.c"/>
+      <file name="src/libm/e_sqrt.c"/>
+      <file name="src/libm/k_cos.c"/>
+      <file name="src/libm/k_rem_pio2.c"/>
+      <file name="src/libm/k_sin.c"/>
+      <file name="src/libm/s_atan.c"/>
+      <file name="src/libm/s_copysign.c"/>
+      <file name="src/libm/s_cos.c"/>
+      <file name="src/libm/s_fabs.c"/>
+      <file name="src/libm/s_floor.c"/>
+      <file name="src/libm/s_scalbn.c"/>
+      <file name="src/libm/s_sin.c"/>
+      <file name="src/SDL.c"/>
+      <file name="src/events/SDL_windowevents.c"/>
+      <file name="src/SDL_assert.c"/>
+      <file name="src/atomic/SDL_atomic.c"/>
+      <file name="src/audio/SDL_audio.c"/>
+      <file name="src/audio/SDL_audiocvt.c"/>
+      <file name="src/audio/SDL_audiotypecvt.c"/>
+      <file name="src/render/software/SDL_blendfillrect.c"/>
+      <file name="src/render/software/SDL_blendline.c"/>
+      <file name="src/render/software/SDL_blendpoint.c"/>
+      <file name="src/video/SDL_blit.c"/>
+      <file name="src/video/SDL_blit_0.c"/>
+      <file name="src/video/SDL_blit_1.c"/>
+      <file name="src/video/SDL_blit_A.c"/>
+      <file name="src/video/SDL_blit_auto.c"/>
+      <file name="src/video/SDL_blit_copy.c"/>
+      <file name="src/video/SDL_blit_N.c"/>
+      <file name="src/video/SDL_blit_slow.c"/>
+      <file name="src/video/SDL_bmp.c"/>
+      <file name="src/video/SDL_clipboard.c"/>
+      <file name="src/events/SDL_clipboardevents.c"/>
+      <file name="src/cpuinfo/SDL_cpuinfo.c"/>
+      <file name="src/audio/disk/SDL_diskaudio.c"/>
+      <file name="src/render/software/SDL_drawline.c"/>
+      <file name="src/render/software/SDL_drawpoint.c"/>
+      <file name="src/events/SDL_dropevents.c"/>
+      <file name="src/audio/dummy/SDL_dummyaudio.c"/>
+      <file name="src/SDL_error.c"/>
+      <file name="src/events/SDL_events.c"/>
+      <file name="src/video/SDL_fillrect.c"/>
+      <file name="src/events/SDL_gesture.c"/>
+      <file name="src/stdlib/SDL_getenv.c"/>
+      <file name="src/haptic/SDL_haptic.c"/>
+      <file name="src/SDL_hints.c"/>
+      <file name="src/stdlib/SDL_iconv.c"/>
+      <file name="src/events/SDL_keyboard.c"/>
+      <file name="src/SDL_log.c"/>
+      <file name="src/stdlib/SDL_malloc.c"/>
+      <file name="src/audio/SDL_mixer.c"/>
+      <file name="src/events/SDL_mouse.c"/>
+      <file name="src/video/dummy/SDL_nullevents.c"/>
+      <file name="src/video/dummy/SDL_nullframebuffer.c"/>
+      <file name="src/video/dummy/SDL_nullvideo.c"/>
+      <file name="src/video/SDL_pixels.c"/>
+      <file name="src/power/SDL_power.c"/>
+      <file name="src/stdlib/SDL_qsort.c"/>
+      <file name="src/events/SDL_quit.c"/>
+      <file name="src/video/SDL_rect.c"/>
+      <file name="src/render/SDL_render.c"/>
+      <file name="src/render/opengl/SDL_render_gl.c"/>
+      <file name="src/render/software/SDL_render_sw.c"/>
+      <file name="src/video/SDL_RLEaccel.c"/>
+      <file name="src/render/software/SDL_rotate.c"/>
+      <file name="src/file/SDL_rwops.c"/>
+      <file name="src/render/opengl/SDL_shaders_gl.c"/>
+      <file name="src/video/SDL_shape.c"/>
+      <file name="src/atomic/SDL_spinlock.c"/>
+      <file name="src/stdlib/SDL_stdlib.c"/>
+      <file name="src/video/SDL_stretch.c"/>
+      <file name="src/stdlib/SDL_string.c"/>
+      <file name="src/video/SDL_surface.c"/>
+      <file name="src/thread/generic/SDL_syscond.c"/>
+     <file name="src/thread/SDL_thread.c"/>
+      <file name="src/timer/SDL_timer.c"/>
+      <file name="src/events/SDL_touch.c"/>
+      <file name="src/video/SDL_video.c"/>
+      <file name="src/audio/SDL_wave.c"/>
+      <file name="src/render/SDL_yuv_mmx.c" unless="macos" />
+      <file name="src/render/SDL_yuv_sw.c"/>
+
+
+   <section if="mac">
+   </section>
+   
+
+</files>
+
+
+
+<target id="default" output="${LIBPREFIX}SDL2${DBG}${LIBEXTRA}" tool="linker" toolid="static_link">
+  <files id="sdl2"/>
+  <outdir name="../../../lib/${BINDIR}"/>
+</target>
+
+
+</xml>
+
+
+
+
+

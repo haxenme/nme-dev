@@ -1,0 +1,33 @@
+<xml>
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<files id="png" >
+   <compilerflag value="-I../../../include" />
+   <file name="png.c" />
+   <file name="pngerror.c" />
+   <file name="pngget.c" />
+   <file name="pngmem.c" />
+   <file name="pngpread.c" />
+   <file name="pngread.c" />
+   <file name="pngrio.c" />
+   <file name="pngrtran.c" />
+   <file name="pngrutil.c" />
+   <file name="pngset.c" />
+   <file name="pngtrans.c" />
+   <file name="pngwio.c" />
+   <file name="pngwrite.c" />
+   <file name="pngwtran.c" />
+   <file name="pngwutil.c" />
+</files>
+
+
+
+<target id="default" output="${LIBPREFIX}png${DBG}${LIBEXTRA}" tool="linker" toolid="static_link">
+  <files id="png"/>
+  <outdir name="../../../lib/${BINDIR}"/>
+</target>
+
+
+</xml>
+

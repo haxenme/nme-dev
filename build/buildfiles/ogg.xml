@@ -1,0 +1,23 @@
+<xml>
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+<files id="ogg" >
+   <compilerflag value="-Iinclude" />
+
+   <file name="src/bitwise.c" />
+   <file name="src/framing.c" />
+
+</files>
+
+
+
+<target id="default" output="${LIBPREFIX}ogg${DBG}${LIBEXTRA}" tool="linker" toolid="static_link">
+  <files id="ogg"/>
+  <outdir name="../../../lib/${BINDIR}"/>
+</target>
+
+
+</xml>
+
+
