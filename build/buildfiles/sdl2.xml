@@ -185,7 +185,7 @@
       <file name="src/events/SDL_touch.c"/>
       <file name="src/video/SDL_video.c"/>
       <file name="src/audio/SDL_wave.c"/>
-      <file name="src/render/SDL_yuv_mmx.c" unless="macos" />
+      <file name="src/render/SDL_yuv_mmx.c" />
       <file name="src/render/SDL_yuv_sw.c"/>
 
 
