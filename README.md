@@ -31,4 +31,16 @@ Mac
 ```
 neko build.n -DHXCPP_M64
 neko build.n -DHXCPP_M32
+neko build.n -Diphonesim
+neko build.n -Diphoneos
+neko build.n -Diphoneos -DHXCPP_ARMV7
+```
+
+Android
+-------
+From Mac, Windows or Linux with the compiler correctly set,
+```
+neko build.n -Dandroid
+neko build.n -Dandroid -DHXCPP_ARMV7
+neko build.n -Dandroid -DHXCPP_X86
 ```
