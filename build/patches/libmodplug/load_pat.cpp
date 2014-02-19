@@ -53,7 +53,7 @@ typedef UWORD WORD;
 
 #include "load_pat.h"
 
-#ifdef MSC_VER
+#ifdef _MSC_VER
 #define DIRDELIM		'\\'
 #define TIMIDITYCFG	"C:\\TIMIDITY\\TIMIDITY.CFG"
 #define PATHFORPAT	"C:\\TIMIDITY\\INSTRUMENTS"
@@ -72,8 +72,9 @@ static char pathforpat[128];
 static char timiditycfg[128];
 
 
-#ifdef HX_WINDOWS
-bool isblank(int ch)
+#ifdef _MSC_VER
+#define isblank my_isblank
+int isblank(int ch)
 {
    return ch==' ' || ch=='\t';
 }
