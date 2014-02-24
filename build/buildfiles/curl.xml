@@ -23,30 +23,6 @@
    <compilerflag value="-DFD_SETSIZE=64" if="blackberry"/>
    <compilerflag value="-DUSE_AXTLS=1" if="curl_ssl" />
 
-   <section if="unused" >
-      <file name="lib/curl_rtmp.c"/>
-      <file name="lib/curl_sspi.c"/>
-      <file name="lib/gtls.c"/>
-      <file name="lib/hostares.c"/>
-      <file name="lib/http_negotiate.c"/>
-      <file name="lib/http_negotiate_sspi.c"/>
-      <file name="lib/http_ntlm.c"/>
-      <file name="lib/md4.c"/>
-      <file name="lib/memdebug.c"/>
-      <file name="lib/nss.c"/>
-      <file name="lib/nwlib.c"/>
-      <file name="lib/nwos.c"/>
-      <file name="lib/security.c"/>
-      <file name="lib/socks_gssapi.c"/>
-      <file name="lib/socks_sspi.c"/>
-      <file name="lib/ssh.c"/>
-      <file name="lib/ssluse.c"/>
-      <file name="lib/strdup.c"/>
-      <file name="lib/strtoofft.c"/>
-      <file name="lib/polarssl.c"/>
-      <file name="lib/qssl.c"/>
-   </section>
-
    <section if="windows">
       <!--<file name="lib/hostthre.c"/>-->
      <file name="lib/strtok.c"/>
@@ -77,7 +53,7 @@
    <file name="lib/hash.c"/>
    <file name="lib/hmac.c"/>
    <file name="lib/hostip.c"/>
-   <file name="lib/hostip4.c"/>
+   <!--<file name="lib/hostip4.c"/>-->
    <file name="lib/hostip6.c"/>
    <file name="lib/hostsyn.c"/>
    <file name="lib/http.c"/>
@@ -128,8 +104,8 @@
    <file name="lib/wildcard.c"/>
 
    <file name="lib/curl_sasl.c" />
-   <file name="lib/asyn-ares.c" />
-   <file name="lib/asyn-thread.c" />
+   <file name="lib/asyn-ares.c" unless="macos" />
+   <file name="lib/asyn-thread.c" unless="macos" />
    <file name="lib/conncache.c" />
    <file name="lib/pipeline.c" />
    <file name="lib/bundles.c" />
@@ -163,17 +139,7 @@
       <file name="axTLS/ssl/x509.c" />
 
       <file name="lib/vtls/axtls.c" />
-      <file name="lib/vtls/curl_schannel.c" />
-      <file name="lib/vtls/openssl.c" />
-      <file name="lib/vtls/curl_darwinssl.c" if="macos" />
-      <file name="lib/vtls/polarssl.c" />
-      <file name="lib/vtls/polarssl_threadlock.c" />
       <file name="lib/vtls/vtls.c" />
-      <file name="lib/vtls/gskit.c" />
-      <file name="lib/vtls/qssl.c" />
-      <file name="lib/vtls/cyassl.c" />
-      <file name="lib/vtls/gtls.c" />
-      <file name="lib/vtls/nss.c" />
    </section>
 
 </files>
