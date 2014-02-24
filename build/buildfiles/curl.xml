@@ -48,7 +48,7 @@
    </section>
 
    <section if="windows">
-     <file name="lib/hostthre.c"/>
+      <!--<file name="lib/hostthre.c"/>-->
      <file name="lib/strtok.c"/>
      <file name="lib/hostasyn.c"/>
       <file name="lib/curl_threads.c"/>
@@ -62,7 +62,7 @@
    <file name="lib/curl_fnmatch.c"/>
    <file name="lib/curl_gethostname.c"/>
    <file name="lib/curl_memrchr.c"/>
-   <file name="lib/curl_rand.c"/>
+   <!--<file name="lib/curl_rand.c"/>-->
    <file name="lib/dict.c"/>
    <file name="lib/easy.c"/>
    <file name="lib/escape.c"/>
@@ -81,6 +81,7 @@
    <file name="lib/hostip6.c"/>
    <file name="lib/hostsyn.c"/>
    <file name="lib/http.c"/>
+   <file name="lib/http_proxy.c"/>
    <file name="lib/http_chunks.c"/>
    <file name="lib/http_digest.c"/>
    <file name="lib/if2ip.c"/>
@@ -89,7 +90,7 @@
       <file name="lib/idn_win32.c" if="windows"/>
       <file name="lib/inet_ntop.c"/>
       <file name="lib/inet_pton.c"/>
-      <file name="lib/krb4.c"/>
+      <!--<file name="lib/krb4.c"/>-->
       <file name="lib/krb5.c"/>
       <file name="lib/ldap.c"/>
       <file name="lib/openldap.c"/>
@@ -114,7 +115,7 @@
    <file name="lib/socks.c"/>
    <file name="lib/speedcheck.c"/>
    <file name="lib/splay.c"/>
-   <file name="lib/sslgen.c"/>
+   <!--<file name="lib/sslgen.c"/>-->
    <file name="lib/strequal.c"/>
    <file name="lib/strerror.c"/>
    <file name="lib/telnet.c"/>
@@ -126,12 +127,21 @@
    <file name="lib/warnless.c"/>
    <file name="lib/wildcard.c"/>
 
+   <file name="lib/curl_sasl.c" />
+   <file name="lib/asyn-ares.c" />
+   <file name="lib/asyn-thread.c" />
+   <file name="lib/conncache.c" />
+   <file name="lib/pipeline.c" />
+   <file name="lib/bundles.c" />
+   <file name="lib/dotdot.c" />
+   <file name="lib/hostcheck.c" />
+
    <section if="curl_ssl" >
+
       <compilerflag value="-IaxTLS/crypto" />
       <compilerflag value="-IaxTLS/ssl" />
       <compilerflag value="-IaxTLS/config" />
 
-      <file name="lib/axtls.c"/>
       <file name="axTLS/crypto/aes.c" />
       <file name="axTLS/crypto/bigint.c" />
       <file name="axTLS/crypto/crypto_misc.c" />
@@ -151,6 +161,19 @@
       <file name="axTLS/ssl/tls1_clnt.c" />
       <file name="axTLS/ssl/tls1_svr.c" />
       <file name="axTLS/ssl/x509.c" />
+
+      <file name="lib/vtls/axtls.c" />
+      <file name="lib/vtls/curl_schannel.c" />
+      <file name="lib/vtls/openssl.c" />
+      <file name="lib/vtls/curl_darwinssl.c" if="macos" />
+      <file name="lib/vtls/polarssl.c" />
+      <file name="lib/vtls/polarssl_threadlock.c" />
+      <file name="lib/vtls/vtls.c" />
+      <file name="lib/vtls/gskit.c" />
+      <file name="lib/vtls/qssl.c" />
+      <file name="lib/vtls/cyassl.c" />
+      <file name="lib/vtls/gtls.c" />
+      <file name="lib/vtls/nss.c" />
    </section>
 
 </files>

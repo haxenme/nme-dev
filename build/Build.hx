@@ -49,7 +49,7 @@ class Build
       buildPng("1.2.24");
       buildJpeg("6b");
       buildFreetype("2.5.0.1");
-      buildCurl("7.21.4","1.4.4");
+      buildCurl("7.35.0","1.4.4");
       if (!android)
       {
          buildOgg("1.3.0");
@@ -242,11 +242,12 @@ class Build
       copy(axtls+"/ssl/ssl.h", axtls+"/ssl.h");
       copy("configs/axTLS-config.h", axtls+"/config/config.h");
       copy("patches/curl/crypto_misc.c", axtls+"/crypto/crypto_misc.c");
+      copy("patches/curl/axtls.c", dir+"/lib/vtls/axtls.c");
+
 
       copy("configs/curl_config.gcc", dir+"/lib/curl_config.h");
       copy("patches/curl/curlbuild.h", dir+"/include/curl");
       copy("buildfiles/curl.xml", dir);
-      runIn(dir, "haxelib", ["run", "hxcpp", "curl.xml", "-Dstatic_link" ].concat(buildArgs));
       runIn(dir, "haxelib", ["run", "hxcpp", "curl.xml", "-Dstatic_link", "-Dcurl_ssl" ].concat(buildArgs));
       copyRecursive('$dir/include/curl',"../include/curl");
    }
