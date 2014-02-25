@@ -1,45 +1,16 @@
 import sys.FileSystem;
 import sys.io.File;
 
-class Build
+class Build extends hxcpp.Builder
 {
-   static var buildArgs = new Array<String>();
+   var buildArgs = new Array<String>();
 
-   public static function main()
+   override public function allowNdll() { return false; }
+
+   override public function runBuild(target:String, isStatic:Bool, arch:String, buildFlags:Array<String>)
    {
-      var android = false;
-      var ios = false;
-
-      for( arg in Sys.args() )
-      {
-         if (arg=="-64" || arg=="-m64" )
-         {
-            buildArgs.push("-DHXCPP_M64");
-         }
-         else if (arg=="android")
-         {
-            android = true;
-            buildArgs.push("-Dandroid");
-         }
-         else if (arg=="iphone" || arg=="iphoneos")
-         {
-            ios = true;
-            buildArgs.push("-Diphon");
-            buildArgs.push("-Diphoneos");
-         }
-         else if (arg=="iphonesim")
-         {
-            ios = true;
-            buildArgs.push("-Diphone");
-            buildArgs.push("-Diphonesim");
-         }
-         else if (arg=="-x86")
-            buildArgs.push("-DHXCPP_X86");
-         else if (arg=="-v7")
-            buildArgs.push("-DHXCPP_ARMV7");
-         else
-            buildArgs.push(arg);
-      }
+      var android = target=="android";
+      var ios =  target=="ios";
 
       mkdir("bin");
       mkdir("unpack");
@@ -64,7 +35,11 @@ class Build
          buildSDL2("2.0.1");
          buildSDL2Mixer("2.0.0");
       }
-      //buildOpenal("1.15.1");
+   }
+
+   override public function getCleanDir()
+   {
+      return "unpack";
    }
 
    public static function mkdir(inDir:String)
@@ -141,27 +116,27 @@ class Build
      Sys.setCwd(oldPath);
    }
 
-   public static function buildZ(inVer:String)
+   public function buildZ(inVer:String)
    {
       var dir = 'unpack/zlib-$inVer';
       untar(dir,"zlib-" + inVer + ".tgz");
       copy("buildfiles/zlib.xml", dir);
-      runIn(dir, "haxelib", ["run", "hxcpp", "zlib.xml", "-Dstatic_link"].concat(buildArgs));
+      runIn(dir, "haxelib", ["run", "hxcpp", "zlib.xml" ].concat(buildArgs));
       copy('$dir/zlib.h',"../include");
       copy('$dir/zconf.h',"../include");
    }
 
-   public static function buildPng(inVer:String)
+   public function buildPng(inVer:String)
    {
       var dir = 'unpack/libpng-$inVer';
       untar(dir,"libpng-" + inVer + ".tgz");
       copy("buildfiles/png.xml", dir);
-      runIn(dir, "haxelib", ["run", "hxcpp", "png.xml", "-Dstatic_link"].concat(buildArgs));
+      runIn(dir, "haxelib", ["run", "hxcpp", "png.xml" ].concat(buildArgs));
       copy('$dir/png.h',"../include");
       copy('$dir/pngconf.h',"../include");
    }
 
-   public static function buildJpeg(inVer:String)
+   public function buildJpeg(inVer:String)
    {
       var dir = 'unpack/jpeg-$inVer';
       untar(dir,"jpeg-" + inVer + ".tgz");
@@ -170,7 +145,7 @@ class Build
          copy('configs/jconfig.$config', dir);
 
       copy("buildfiles/jpeg.xml", dir);
-      runIn(dir, "haxelib", ["run", "hxcpp", "jpeg.xml", "-Dstatic_link"].concat(buildArgs));
+      runIn(dir, "haxelib", ["run", "hxcpp", "jpeg.xml" ].concat(buildArgs));
       for(config in configs)
          copy('configs/jconfig.$config', "../include");
       copy('$dir/jpeglib.h',"../include");
@@ -178,33 +153,33 @@ class Build
    }
 
 
-   public static function buildOgg(inVer:String)
+   public function buildOgg(inVer:String)
    {
       var dir = 'unpack/libogg-$inVer';
       untar(dir,"libogg-" + inVer + ".tgz");
       copy('configs/ogg-config_types.h', dir+"/include/ogg/config_types.h");
       copy("buildfiles/ogg.xml", dir);
-      runIn(dir, "haxelib", ["run", "hxcpp", "ogg.xml", "-Dstatic_link"].concat(buildArgs));
+      runIn(dir, "haxelib", ["run", "hxcpp", "ogg.xml" ].concat(buildArgs));
       mkdir("../include/ogg");
       copy('$dir/include/ogg/ogg.h',"../include/ogg");
       copy('configs/ogg-config_types.h', "../include/ogg/config_types.h");
       copy('$dir/include/ogg/os_types.h',"../include/ogg");
    }
 
-   public static function buildVorbis(inVer:String)
+   public function buildVorbis(inVer:String)
    {
       var dir = 'unpack/libvorbis-$inVer';
       untar(dir,"libvorbis-" + inVer + ".tgz");
       copy('patches/vorbis/os.h', dir+"/lib");
       copy("buildfiles/vorbis.xml", dir);
-      runIn(dir, "haxelib", ["run", "hxcpp", "vorbis.xml", "-Dstatic_link"].concat(buildArgs));
+      runIn(dir, "haxelib", ["run", "hxcpp", "vorbis.xml" ].concat(buildArgs));
       mkdir("../include/vorbis");
       copy('$dir/include/vorbis/vorbisfile.h',"../include/vorbis");
       copy('$dir/include/vorbis/codec.h',"../include/vorbis");
       copy('$dir/include/vorbis/vorbisenc.h',"../include/vorbis");
    }
 
-   public static function buildTheora(inVer:String)
+   public function buildTheora(inVer:String)
    {
       var dir = 'unpack/libtheora-$inVer';
       untar(dir,"libtheora-" + inVer + ".tar.bz2", true);
@@ -212,7 +187,7 @@ class Build
       copy('patches/theora/theoraplay.h', dir+"/include");
       copy('patches/theora/theoraplay_cvtrgb.h', dir+"/include");
       copy("buildfiles/theora.xml", dir);
-      runIn(dir, "haxelib", ["run", "hxcpp", "theora.xml", "-Dstatic_link"].concat(buildArgs));
+      runIn(dir, "haxelib", ["run", "hxcpp", "theora.xml" ].concat(buildArgs));
       mkdir("../include/theora");
       copy('$dir/include/theora/theora.h',"../include/theora");
       copy('$dir/include/theora/theoradec.h',"../include/theora");
@@ -220,18 +195,18 @@ class Build
       copy('$dir/include/theoraplay.h',"../include");
    }
 
-   public static function buildFreetype(inVer:String)
+   public function buildFreetype(inVer:String)
    {
       var dir = 'unpack/freetype-$inVer';
       untar(dir,"freetype-" + inVer + ".tgz");
       copy("buildfiles/freetype.xml", dir);
-      runIn(dir, "haxelib", ["run", "hxcpp", "freetype.xml", "-Dstatic_link"].concat(buildArgs));
+      runIn(dir, "haxelib", ["run", "hxcpp", "freetype.xml" ].concat(buildArgs));
       copy('$dir/include/ft2build.h',"../include");
       copyRecursive('$dir/include/freetype',"../include/freetype");
    }
 
 
-   public static function buildCurl(inVer:String,inAxTlsVer:String)
+   public function buildCurl(inVer:String,inAxTlsVer:String)
    {
 
       var dir = 'unpack/curl-$inVer';
@@ -248,12 +223,12 @@ class Build
       copy("configs/curl_config.gcc", dir+"/lib/curl_config.h");
       copy("patches/curl/curlbuild.h", dir+"/include/curl");
       copy("buildfiles/curl.xml", dir);
-      runIn(dir, "haxelib", ["run", "hxcpp", "curl.xml", "-Dstatic_link", "-Dcurl_ssl" ].concat(buildArgs));
+      runIn(dir, "haxelib", ["run", "hxcpp", "curl.xml", "-Dcurl_ssl" ].concat(buildArgs));
       copyRecursive('$dir/include/curl',"../include/curl");
    }
 
 
-   public static function buildSDL2(inVer:String)
+   public function buildSDL2(inVer:String)
    {
       var dir = 'unpack/SDL2-$inVer';
       untar(dir,"SDL2-" + inVer + ".tgz");
@@ -261,12 +236,12 @@ class Build
       copy("patches/SDL2/SDL_config_linux.h", dir+"/include/SDL_config_minimal.h");
       copy("patches/SDL2/SDL_stdinc.h", dir+"/include");
       copy("buildfiles/sdl2.xml", dir);
-      runIn(dir, "haxelib", ["run", "hxcpp", "sdl2.xml", "-Dstatic_link"].concat(buildArgs));
+      runIn(dir, "haxelib", ["run", "hxcpp", "sdl2.xml" ].concat(buildArgs));
       mkdir("../include/SDL2");
       copyRecursive('$dir/include',"../include/SDL2");
    }
 
-   public static function buildModPlug(inVer:String)
+   public function buildModPlug(inVer:String)
    {
       var dir = 'unpack/libmodplug-$inVer';
       untar(dir,"libmodplug-" + inVer + ".tgz");
@@ -274,32 +249,27 @@ class Build
       copy("configs/modplug_config.h", dir+"/src/config.h");
       copy("patches/libmodplug/load_abc.cpp", dir+"/src");
       copy("patches/libmodplug/load_pat.cpp", dir+"/src");
-      runIn(dir, "haxelib", ["run", "hxcpp", "modplug.xml", "-Dstatic_link"].concat(buildArgs));
+      runIn(dir, "haxelib", ["run", "hxcpp", "modplug.xml" ].concat(buildArgs));
       copy('$dir/src/modplug.h',"../include/modplug.h");
    }
 
 
 
-   public static function buildSDL2Mixer(inVer:String)
+   public function buildSDL2Mixer(inVer:String)
    {
       var dir = 'unpack/SDL2_mixer-$inVer';
       untar(dir,"SDL2_mixer-" + inVer + ".tgz");
       copy("buildfiles/sdl2_mixer.xml", dir);
       copy("patches/SDL2_mixer/music.c", dir);
-      runIn(dir, "haxelib", ["run", "hxcpp", "sdl2_mixer.xml", "-Dstatic_link"].concat(buildArgs));
+      runIn(dir, "haxelib", ["run", "hxcpp", "sdl2_mixer.xml" ].concat(buildArgs));
       mkdir("../include/SDL2");
       copy('$dir/SDL_mixer.h',"../include/SDL2/SDL_mixer.h");
    }
 
 
-   public static function buildOpenal(inVer:String)
+   public static function main()
    {
-      var dir = 'unpack/openal-soft-$inVer';
-      untar(dir,"openal-soft-" + inVer + ".tgz");
-      copy("buildfiles/openal.xml", dir);
-      copy("configs/openal_config.h", dir+"/config.h");
-      runIn(dir, "haxelib", ["run", "hxcpp", "openal.xml", "-Dstatic_link"].concat(buildArgs));
+      new Build( Sys.args() );
    }
-
 }
 
