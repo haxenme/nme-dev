@@ -3,14 +3,18 @@ import sys.io.File;
 
 class Build extends hxcpp.Builder
 {
-   var buildArgs = new Array<String>();
+   var buildArgs:Array<String>;
 
    override public function allowNdll() { return false; }
 
-   override public function runBuild(target:String, isStatic:Bool, arch:String, buildFlags:Array<String>)
+   override public function runBuild(target:String, isStatic:Bool, arch:String, inBuildFlags:Array<String>)
    {
       var android = target=="android";
       var ios =  target=="ios";
+      buildArgs = inBuildFlags;
+
+      if (verbose)
+         Sys.println('Build $target $isStatic $android ' + buildArgs);
 
       mkdir("bin");
       mkdir("unpack");
