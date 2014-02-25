@@ -53,7 +53,7 @@
    <file name="lib/hash.c"/>
    <file name="lib/hmac.c"/>
    <file name="lib/hostip.c"/>
-   <!--<file name="lib/hostip4.c"/>-->
+   <file name="lib/hostip4.c" if="windows" />
    <file name="lib/hostip6.c"/>
    <file name="lib/hostsyn.c"/>
    <file name="lib/http.c"/>
