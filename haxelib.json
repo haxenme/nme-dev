@@ -2,10 +2,11 @@
   "name": "nme-state",
   "url": "http://code.google.com/p/nme-state/",
   "license": "MIT",
-  "tags": [],
+  "tags": ["nme", "library"],
   "description": "Supporting headers and libraries to make it easy to build NME from source.",
   "version": "1.2.0",
   "releasenote": "release",
+  "binaryversion": "1",
   "contributors": ["gamehaxe"],
   "dependencies": {}
 }
