@@ -1,0 +1,3 @@
+-main Build
+-neko ../../project/build.n
+-debug
