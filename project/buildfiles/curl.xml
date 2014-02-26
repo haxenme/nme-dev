@@ -104,8 +104,8 @@
    <file name="lib/wildcard.c"/>
 
    <file name="lib/curl_sasl.c" />
-   <file name="lib/asyn-ares.c" unless="macos" />
-   <file name="lib/asyn-thread.c" unless="macos" />
+   <file name="lib/asyn-ares.c" if="windows" />
+   <file name="lib/asyn-thread.c" if="windows" />
    <file name="lib/conncache.c" />
    <file name="lib/pipeline.c" />
    <file name="lib/bundles.c" />
