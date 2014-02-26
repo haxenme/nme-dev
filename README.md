@@ -13,34 +13,23 @@ cd build
 neko build.n clean
 ```
 
-Linux
------
-```
-neko build.n -DHXCPP_M64
-neko build.n -DHXCPP_M32
-```
-
-Windows
--------
+Linux, Mac, Windows
+-------------------
 ```
 neko build.n
 ```
 
-Mac
----
-```
-neko build.n -DHXCPP_M64
-neko build.n -DHXCPP_M32
-neko build.n -Diphonesim
-neko build.n -Diphoneos
-neko build.n -Diphoneos -DHXCPP_ARMV7
-```
 
 Android
 -------
 From Mac, Windows or Linux with the compiler correctly set,
 ```
-neko build.n -Dandroid
-neko build.n -Dandroid -DHXCPP_ARMV7
-neko build.n -Dandroid -DHXCPP_X86
+neko build.n android
+```
+
+ios
+-------
+From Mac, xcode installed correctly,
+```
+neko build.n ios
 ```
