@@ -9,6 +9,7 @@
    <compilerflag value="-DHAVE_LIBC" />
 
    <section if="linux">
+      <compilerflag value="-I../../../include/xcompile" />
       <file name="src/joystick/linux/SDL_sysjoystick.c" />
       <file name="src/audio/dsp/SDL_dspaudio.c" />
       <file name="src/haptic/linux/SDL_syshaptic.c" />

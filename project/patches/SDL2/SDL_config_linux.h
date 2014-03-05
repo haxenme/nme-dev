@@ -319,4 +319,9 @@
 #define SDL_ASSEMBLY_ROUTINES 1
 /* #undef SDL_ALTIVEC_BLITTERS */
 
+
+#ifndef PATH_MAX
+#define PATH_MAX 1024
+#endif
+
 #endif /* _SDL_config_h */
