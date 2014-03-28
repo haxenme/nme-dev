@@ -10,7 +10,12 @@ class Build extends hxcpp.Builder
    override public function runBuild(target:String, isStatic:Bool, arch:String, inBuildFlags:Array<String>)
    {
       var android = target=="android";
-      var ios =  target=="ios";
+      var ios = target=="ios";
+      var blackberry = target=="blackberry";
+      var tizen = target=="tizen";
+      var emscripten = target=="emscripten";
+      var webos = target=="webos";
+      
       buildArgs = inBuildFlags;
 
       if (verbose)
@@ -19,22 +24,31 @@ class Build extends hxcpp.Builder
       mkdir("bin");
       mkdir("unpack");
       mkdir("../include");
-
+      
+      if (emscripten)
+      {
+         buildFreetype("2.5.0.1");
+         return;
+      }
+      
       buildZ("1.2.3");
       buildPng("1.2.24");
       buildJpeg("6b");
       buildFreetype("2.5.0.1");
       buildCurl("7.35.0","1.4.4");
-      if (!android)
+      if (!android && !webos)
       {
          buildOgg("1.3.0");
          buildVorbis("1.3.3");
-         buildTheora("1.1.1");
+         if (!tizen)
+         {
+            buildTheora("1.1.1");
+         }
       }
 
       buildModPlug("0.8.8.4");
 
-      if (!android && !ios)
+      if (!android && !ios && !blackberry && !tizen && !webos)
       {
          buildSDL2("2.0.1");
          buildSDL2Mixer("2.0.0");
