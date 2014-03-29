@@ -80,7 +80,11 @@ class Build extends hxcpp.Builder
 
    public static function run(inExe:String, inArgs:Array<String>)
    {
-      Sys.command(inExe,inArgs);
+      var result = Sys.command(inExe,inArgs);
+      if (result != 0)
+      {
+         Sys.exit(result);
+      }
    }
 
    public static function copy(inFrom:String, inTo:String)
@@ -128,10 +132,14 @@ class Build extends hxcpp.Builder
 
    public static function runIn(inDir:String, inExe:String, inArgs:Array<String>)
    {
-     var oldPath:String = Sys.getCwd();
-     Sys.setCwd(inDir);
-     Sys.command(inExe,inArgs);
-     Sys.setCwd(oldPath);
+      var oldPath:String = Sys.getCwd();
+      Sys.setCwd(inDir);
+      var result = Sys.command(inExe,inArgs);
+      if (result != 0)
+      {
+         Sys.exit(result);
+      }
+      Sys.setCwd(oldPath);
    }
 
    public function buildZ(inVer:String)
