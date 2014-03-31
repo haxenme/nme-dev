@@ -1,5 +1,5 @@
-nme-state
-=========
+nme-dev
+=======
 
 Support files for building nme
 
