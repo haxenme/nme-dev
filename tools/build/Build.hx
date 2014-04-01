@@ -52,6 +52,7 @@ class Build extends hxcpp.Builder
       {
          buildSDL2("2.0.1");
          buildSDL2Mixer("2.0.0");
+         buildOpenAL("1.15.1");
       }
    }
 
@@ -190,6 +191,17 @@ class Build extends hxcpp.Builder
       copy('$dir/include/ogg/ogg.h',"../include/ogg");
       copy('configs/ogg-config_types.h', "../include/ogg/config_types.h");
       copy('$dir/include/ogg/os_types.h',"../include/ogg");
+   }
+   
+   public function buildOpenAL(inVer:String)
+   {
+      var dir = 'unpack/openal-soft-$inVer';
+      untar(dir,"openal-soft-" + inVer + ".tar.bz2", true);
+      copy('configs/openal_config.h', dir+"/include/config.h");
+      copy("buildfiles/openal.xml", dir);
+      runIn(dir, "haxelib", ["run", "hxcpp", "openal.xml" ].concat(buildArgs));
+      mkdir("../include/AL");
+      copyRecursive('$dir/include/AL', "../include/AL");
    }
 
    public function buildVorbis(inVer:String)
