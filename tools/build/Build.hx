@@ -36,14 +36,12 @@ class Build extends hxcpp.Builder
       buildJpeg("6b");
       buildFreetype("2.5.0.1");
       buildCurl("7.35.0","1.4.4");
-      if (!android && !webos)
+      buildOgg("1.3.0");
+      buildVorbis("1.3.3");
+      
+      if (!android && !webos && !tizen)
       {
-         buildOgg("1.3.0");
-         buildVorbis("1.3.3");
-         if (!tizen)
-         {
-            buildTheora("1.1.1");
-         }
+         buildTheora("1.1.1");
       }
 
       buildModPlug("0.8.8.4");
