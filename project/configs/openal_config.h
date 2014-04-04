@@ -70,10 +70,6 @@
 #define HAVE__CONTROLFP
 #define HAVE___CONTROL87_2
 
-#define AL_ALEXT_PROTOTYPES
-#define _WIN32_WINNT 0x0501
-#define _CRT_SECURE_NO_WARNINGS
-#define _CRT_NONSTDC_NO_DEPRECATE
 #define strcasecmp _stricmp
 #define strncasecmp _strnicmp
 #define snprintf _snprintf

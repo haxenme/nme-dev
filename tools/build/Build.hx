@@ -49,7 +49,7 @@ class Build extends hxcpp.Builder
       if (!android && !ios && !blackberry && !tizen && !webos)
       {
          buildSDL2("2.0.1");
-         buildSDL2Mixer("2.0.0");
+         //buildSDL2Mixer("2.0.0");
          buildOpenAL("1.15.1");
       }
    }
@@ -196,6 +196,7 @@ class Build extends hxcpp.Builder
       var dir = 'unpack/openal-soft-$inVer';
       untar(dir,"openal-soft-" + inVer + ".tar.bz2", true);
       copy('configs/openal_config.h', dir+"/include/config.h");
+      copy('../include/AL/al.h', dir+"/include/AL/al.h");
       copy("buildfiles/openal.xml", dir);
       runIn(dir, "haxelib", ["run", "hxcpp", "openal.xml" ].concat(buildArgs));
       mkdir("../include/AL");

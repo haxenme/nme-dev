@@ -5,6 +5,18 @@
 extern "C" {
 #endif
 
+//Fix for MSVC 2012+ with WinXP compatibility
+#if defined(_WIN32)
+#ifdef isfinite
+#undef isfinite
+#endif
+#ifdef isnan
+#undef isnan
+#endif
+#define isfinite _finite
+#define isnan _isnan
+#endif
+
 #ifndef AL_API
  #if defined(AL_LIBTYPE_STATIC)
   #define AL_API
