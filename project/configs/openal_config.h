@@ -45,13 +45,12 @@
 #elif defined(HX_WINDOWS)
 
 
+#define AL_API
+#define ALC_API
+
 // Why does cmake need this?
 #define SIZEOF_LONG sizeof(long)
 #define SIZEOF_LONG_LONG sizeof(long long)
-
-// Static...
-#define AL_API
-#define ALC_API
 
 #define ALIGN(x) __declspec(align(x))
 #define RESTRICT __restrict
@@ -70,6 +69,16 @@
 #define HAVE_FLOAT_H
 #define HAVE__CONTROLFP
 #define HAVE___CONTROL87_2
+
+#define AL_ALEXT_PROTOTYPES
+#define _WIN32_WINNT 0x0501
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_NONSTDC_NO_DEPRECATE
+#define strcasecmp _stricmp
+#define strncasecmp _strnicmp
+#define snprintf _snprintf
+//#define isfinite _finite
+//#define isnan _isnan
 
 
 

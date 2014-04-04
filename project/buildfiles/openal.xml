@@ -24,8 +24,11 @@
        <file name="Alc/backends/coreaudio.c" />
    </section>
    <section if="windows">
-       <!-- <file name="Alc/backends/winmm.c" /> -->
+       <file name="Alc/backends/winmm.c" />
        <file name="Alc/backends/dsound.c" />
+       <file name="Alc/backends/mmdevapi.c" />
+       <file name="Alc/backends/wave.c" />
+       <file name="Alc/mixer_sse.c"/>
    </section>
 
 
