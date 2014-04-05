@@ -15,6 +15,7 @@
       <compilerflag value="-DREQUIRE_ALSA=ON" />
        <file name="Alc/backends/pulseaudio.c" />
        <file name="Alc/backends/alsa.c" />
+       <file name="Alc/backends/oss.c" />
    </section>
    <section if="android">
       <compilerflag value="-DOPENSL=1" />
@@ -27,7 +28,6 @@
        <file name="Alc/backends/winmm.c" />
        <file name="Alc/backends/dsound.c" />
        <file name="Alc/backends/mmdevapi.c" />
-       <file name="Alc/backends/wave.c" />
        <file name="Alc/mixer_sse.c"/>
    </section>
 
@@ -59,6 +59,7 @@
    <file name="Alc/mixer_c.c"/>
 
    <file name="Alc/backends/loopback.c"/>
+   <file name="Alc/backends/wave.c" />
    <file name="Alc/backends/null.c"/>
 
 </files>

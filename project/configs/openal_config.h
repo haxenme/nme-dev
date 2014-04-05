@@ -108,7 +108,9 @@
 /* #undef HAVE__ALIGNED_MALLOC */
 
 /* Define if we have SSE CPU extensions */
-#define HAVE_SSE
+//#define HAVE_SSE
+
+// Disable for now, may work with different HXCPP compile flags?
 
 /* Define if we have ARM Neon CPU extensions */
 /* #undef HAVE_NEON */
