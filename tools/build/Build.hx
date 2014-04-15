@@ -1,3 +1,4 @@
+import haxe.io.Path;
 import sys.FileSystem;
 import sys.io.File;
 
@@ -49,7 +50,7 @@ class Build extends hxcpp.Builder
       if (!android && !ios && !blackberry && !tizen && !webos)
       {
          buildSDL2("2.0.1");
-         //buildSDL2Mixer("2.0.0");
+         buildSDL2Mixer("2.0.0");
          buildOpenAL("1.15.1");
       }
    }
@@ -72,7 +73,14 @@ class Build extends hxcpp.Builder
             return;
       }
       Sys.println("untar " + inTar);
-      run("tar", [ inBZ ? "xf" : "xzf", "tars/" + inTar, "--no-same-owner", "-C", baseDir ]);
+      if (new EReg ("window", "i").match (Sys.systemName ()))
+      {
+         run("..\\tools\\build\\bin\\7za.exe", [ "x", "-so", "tars/" + inTar, "-r", "-y", "|", "..\\tools\\build\\bin\\7za.exe", "x", "-si", "-ttar", "-o" + baseDir, "-r", "-y" ]);
+      }
+      else
+      {
+         run("tar", [ inBZ ? "xf" : "xzf", "tars/" + inTar, "--no-same-owner", "-C", baseDir ]);
+      }
       if (inCheckDir!="")
          File.saveContent(inCheckDir+"/.extracted","extracted");
    }
