@@ -39,10 +39,12 @@
       <file name="src/audio/SDL_audiocvt.c"/>
       <file name="src/audio/sndio/SDL_sndioaudio.c"/>
       <file name="src/audio/SDL_audiotypecvt.c"/>
+      <file name="src/filesystem/unix/SDL_sysfilesystem.c"/>
    </section>
 
    <section if="windows">
       <compilerflag value="-DSDL_JOYSTICK_DINPUT" />
+      <compilerflag value="-DSDL_FILESYSTEM_WINDOWS" />
       <file name="src/joystick/SDL_joystick.c" />
       <file name="src/joystick/SDL_gamecontroller.c" />
       <file name="src/joystick/windows/SDL_dxjoystick.c"/>
@@ -71,6 +73,7 @@
       <file name="src/audio/xaudio2/SDL_xaudio2.c"/>
       <file name="src/render/direct3d/SDL_render_d3d.c"/>
       <file name="src/audio/directsound/SDL_directsound.c"/>
+      <file name="src/filesystem/windows/SDL_sysfilesystem.c"/>
    </section>
 
    <section unless="windows">
@@ -96,6 +99,7 @@
       <file name="src/video/cocoa/SDL_cocoavideo.m" />
       <file name="src/video/cocoa/SDL_cocoawindow.m" />
       <file name="src/file/cocoa/SDL_rwopsbundlesupport.m" />
+      <file name="src/filesystem/cocoa/SDL_sysfilesystem.m" />
       <file name="src/haptic/darwin/SDL_syshaptic.c" />
       <file name="src/joystick/darwin/SDL_sysjoystick.c" />
       <file name="src/joystick/SDL_gamecontroller.c" />
