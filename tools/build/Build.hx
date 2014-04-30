@@ -49,7 +49,7 @@ class Build extends hxcpp.Builder
 
       if (!android && !ios && !blackberry && !tizen && !webos)
       {
-         buildSDL2("2.0.1");
+         buildSDL2("2.0.3");
          buildSDL2Mixer("2.0.0");
          buildOpenAL("1.15.1");
       }
@@ -279,7 +279,7 @@ class Build extends hxcpp.Builder
       untar(dir,"SDL2-" + inVer + ".tgz");
       copy("patches/SDL2/SDL_config_windows.h", dir+"/include");
       copy("patches/SDL2/SDL_config_linux.h", dir+"/include/SDL_config_minimal.h");
-      copy("patches/SDL2/SDL_stdinc.h", dir+"/include");
+      //copy("patches/SDL2/SDL_stdinc.h", dir+"/include");
       copy("buildfiles/sdl2.xml", dir);
       runIn(dir, "haxelib", ["run", "hxcpp", "sdl2.xml" ].concat(buildArgs));
       mkdir("../include/SDL2");

@@ -10,6 +10,8 @@
 
    <section if="linux">
       <compilerflag value="-I../../../include/xcompile" />
+      <file name="src/core/linux/SDL_evdev.c"/>
+      <file name="src/core/linux/SDL_udev.c"/>
       <file name="src/joystick/linux/SDL_sysjoystick.c" />
       <file name="src/audio/dsp/SDL_dspaudio.c" />
       <file name="src/haptic/linux/SDL_syshaptic.c" />
@@ -33,6 +35,20 @@
       <file name="src/video/x11/edid-parse.c" />
       <file name="src/video/x11/SDL_x11shape.c" />
       <file name="src/video/x11/SDL_x11framebuffer.c" />
+      <file name="src/video/mir/SDL_mirdyn.c" />
+      <file name="src/video/mir/SDL_mirevents.c" />
+      <file name="src/video/mir/SDL_mirframebuffer.c" />
+      <file name="src/video/mir/SDL_mirmouse.c" />
+      <file name="src/video/mir/SDL_miropengl.c" />
+      <file name="src/video/mir/SDL_mirvideo.c" />
+      <file name="src/video/mir/SDL_mirwindow.c" />
+      <file name="src/video/wayland/SDL_waylanddyn.c" />
+      <file name="src/video/wayland/SDL_waylandevents.c" />
+      <file name="src/video/wayland/SDL_waylandmouse.c" />
+      <file name="src/video/wayland/SDL_waylandopengles.c" />
+      <file name="src/video/wayland/SDL_waylandtouch.c" />
+      <file name="src/video/wayland/SDL_waylandvideo.c" />
+      <file name="src/video/wayland/SDL_waylandwindow.c" />
       <file name="src/audio/pulseaudio/SDL_pulseaudio.c" />
       <file name="src/audio/alsa/SDL_alsa_audio.c" />
       <file name="src/audio/SDL_audiodev.c"/>
@@ -146,6 +162,7 @@
       <file name="src/video/SDL_clipboard.c"/>
       <file name="src/events/SDL_clipboardevents.c"/>
       <file name="src/cpuinfo/SDL_cpuinfo.c"/>
+      <file name="src/dynapi/SDL_dynapi.c"/>
       <file name="src/audio/disk/SDL_diskaudio.c"/>
       <file name="src/render/software/SDL_drawline.c"/>
       <file name="src/render/software/SDL_drawpoint.c"/>
@@ -207,6 +224,16 @@
   <files id="sdl2"/>
   <outdir name="../../../lib/${BINDIR}"/>
 </target>
+
+
+<!-- <target id="default" output="${LIBPREFIX}SDL2main${DBG}${LIBEXTRA}" tool="linker" toolid="static_link" if="windows">
+   <compilerflag value="-Iinclude" />
+   <compilerflag value="-Ilib" />
+   <compilerflag value="-I../../../include" />
+   <compilerflag value="-DHAVE_LIBC" />
+   <file name="src/main/windows/SDL_windows_main.c"/>
+   <outdir name="../../../lib/${BINDIR}"/>
+</target> -->
 
 
 </xml>
