@@ -56,6 +56,7 @@
       <file name="src/audio/sndio/SDL_sndioaudio.c"/>
       <file name="src/audio/SDL_audiotypecvt.c"/>
       <file name="src/filesystem/unix/SDL_sysfilesystem.c"/>
+      <file name="src/power/linux/SDL_syspower.c"/>
    </section>
 
    <section if="windows">
@@ -122,6 +123,7 @@
       <file name="src/joystick/SDL_joystick.c" />
       <file name="src/audio/coreaudio/SDL_coreaudio.c" />
       <file name="src/render/SDL_yuv_mmx.c" unless="M64" />
+      <file name="src/power/macosx/SDL_syspower.c"/>
    </section>
 
 
