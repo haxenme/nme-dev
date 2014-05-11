@@ -335,5 +335,8 @@
 #ifndef PATH_MAX
 #define PATH_MAX 1024
 #endif
+#ifndef NAME_MAX
+#define NAME_MAX 1024
+#endif
 
 #endif /* _SDL_config_h */
