@@ -280,6 +280,8 @@ class Build extends hxcpp.Builder
       copy("patches/SDL2/SDL_config_windows.h", dir+"/include");
       copy("patches/SDL2/SDL_config_linux.h", dir+"/include/SDL_config_minimal.h");
       copy("patches/SDL2/SDL_cocoawindow.m", dir+"/src/video/cocoa/SDL_cocoawindow.m");
+      copy("patches/SDL2/SDL_wave.c", dir+"/src/audio/SDL_wave.c");
+      copy("patches/SDL2/SDL_wave.h", dir+"/src/audio/SDL_wave.h");
       //copy("patches/SDL2/SDL_stdinc.h", dir+"/include");
       copy("buildfiles/sdl2.xml", dir);
       runIn(dir, "haxelib", ["run", "hxcpp", "sdl2.xml" ].concat(buildArgs));
