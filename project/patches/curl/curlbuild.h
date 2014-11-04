@@ -528,7 +528,11 @@
 
 #elif defined(__GNUC__)
 #  if defined(__i386__) || defined(__ppc__) || defined(IPHONE) || defined(ANDROID) || defined(WEBOS) || defined(BLACKBERRY) || defined(RASPBERRYPI) || defined(TIZEN)
+#ifdef HXCPP_M64
+#    define CURL_SIZEOF_LONG           8
+#else
 #    define CURL_SIZEOF_LONG           4
+#endif
 #    define CURL_TYPEOF_CURL_OFF_T     long long
 #    define CURL_FORMAT_CURL_OFF_T     "lld"
 #    define CURL_FORMAT_CURL_OFF_TU    "llu"
