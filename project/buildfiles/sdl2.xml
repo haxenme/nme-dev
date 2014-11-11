@@ -62,6 +62,7 @@
    <section if="windows">
       <compilerflag value="-DSDL_JOYSTICK_DINPUT" />
       <compilerflag value="-DSDL_FILESYSTEM_WINDOWS" />
+      <compilerflag value="-I../../../include/mingw" if="mingw"/>
       <file name="src/joystick/SDL_joystick.c" />
       <file name="src/joystick/SDL_gamecontroller.c" />
       <file name="src/joystick/windows/SDL_dxjoystick.c"/>
