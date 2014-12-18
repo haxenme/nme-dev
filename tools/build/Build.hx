@@ -51,7 +51,6 @@ class Build extends hxcpp.Builder
       {
          buildSDL2("2.0.3");
          buildSDL2Mixer("2.0.0");
-         buildOpenAL("1.15.1");
       }
    }
 
@@ -73,20 +72,14 @@ class Build extends hxcpp.Builder
             return;
       }
       Sys.println("untar " + inTar);
-      if (new EReg ("window", "i").match (Sys.systemName ()))
-      {
-         run("..\\tools\\build\\bin\\7za.exe", [ "x", "-so", "tars/" + inTar, "-r", "-y", "|", "..\\tools\\build\\bin\\7za.exe", "x", "-si", "-ttar", "-o" + baseDir, "-r", "-y" ]);
-      }
-      else
-      {
-         run("tar", [ inBZ ? "xf" : "xzf", "tars/" + inTar, "--no-same-owner", "-C", baseDir ]);
-      }
+      run("tar", [ inBZ ? "xf" : "xzf", "tars/" + inTar, "--no-same-owner", "-C", baseDir ]);
       if (inCheckDir!="")
          File.saveContent(inCheckDir+"/.extracted","extracted");
    }
 
    public static function run(inExe:String, inArgs:Array<String>)
    {
+      trace(inExe + " " + inArgs.join(" "));
       var result = Sys.command(inExe,inArgs);
       if (result != 0)
       {
@@ -199,18 +192,6 @@ class Build extends hxcpp.Builder
       copy('$dir/include/ogg/os_types.h',"../include/ogg");
    }
    
-   public function buildOpenAL(inVer:String)
-   {
-      var dir = 'unpack/openal-soft-$inVer';
-      untar(dir,"openal-soft-" + inVer + ".tar.bz2", true);
-      copy('configs/openal_config.h', dir+"/include/config.h");
-      copy('../include/AL/al.h', dir+"/include/AL/al.h");
-      copy("buildfiles/openal.xml", dir);
-      runIn(dir, "haxelib", ["run", "hxcpp", "openal.xml" ].concat(buildArgs));
-      mkdir("../include/AL");
-      copyRecursive('$dir/include/AL', "../include/AL");
-   }
-
    public function buildVorbis(inVer:String)
    {
       var dir = 'unpack/libvorbis-$inVer';
@@ -261,7 +242,10 @@ class Build extends hxcpp.Builder
       untar(axtls,"axTLS-" + inAxTlsVer + ".tgz", false, dir);
       copy(axtls+"/ssl/ssl.h", axtls+"/ssl.h");
       copy("configs/axTLS-config.h", axtls+"/config/config.h");
+      copy("patches/curl/os_port.c", axtls+"/ssl/os_port.c");
+      copy("patches/curl/os_port.h", axtls+"/ssl/os_port.h");
       copy("patches/curl/crypto_misc.c", axtls+"/crypto/crypto_misc.c");
+      copy("patches/curl/bigint_impl.h", axtls+"/crypto/bigint_impl.h");
       copy("patches/curl/axtls.c", dir+"/lib/vtls/axtls.c");
 
 
@@ -279,7 +263,9 @@ class Build extends hxcpp.Builder
       untar(dir,"SDL2-" + inVer + ".tgz");
       copy("patches/SDL2/SDL_config_windows.h", dir+"/include");
       copy("patches/SDL2/SDL_config_linux.h", dir+"/include/SDL_config_minimal.h");
+      copy("patches/SDL2/SDL_platform.h", dir+"/include/SDL_platform.h");
       copy("patches/SDL2/SDL_cocoawindow.m", dir+"/src/video/cocoa/SDL_cocoawindow.m");
+      copy("patches/SDL2/SDL_dxjoystick.c", dir+"/src/joystick/windows/SDL_dxjoystick.c");
       //copy("patches/SDL2/SDL_stdinc.h", dir+"/include");
       copy("buildfiles/sdl2.xml", dir);
       runIn(dir, "haxelib", ["run", "hxcpp", "sdl2.xml" ].concat(buildArgs));

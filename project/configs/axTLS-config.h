@@ -4,7 +4,9 @@
 
 #define HAVE_DOT_CONFIG 1
 #ifdef WIN32
-#define CONFIG_PLATFORM_CYGWIN 1
+   #ifndef __MINGW32__
+   #define CONFIG_PLATFORM_CYGWIN 1
+   #endif
 #define CONFIG_PLATFORM_WIN32 1
 #define STDCALL __stdcall
 #else
@@ -110,7 +112,7 @@
 /*
  * BigInt Options
  */
-#ifndef WIN32
+#if !defined(WIN32) || defined(__MINGW32__)
 #include <stdint.h>
 #else
 typedef unsigned int uint32_t;
