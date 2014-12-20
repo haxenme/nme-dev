@@ -68,6 +68,12 @@ DEFINE_GUID(GUID_DEVINTERFACE_HID, 0x4D1E55B2L, 0xF16F, 0x11CF, 0x88, 0xCB, 0x00
 /* external variables referenced. */
 extern HWND SDL_HelperWindow;
 
+#ifdef __MINGW32__
+HDEVNOTIFY WINAPI RegisterDeviceNotification(
+  HANDLE hRecipient,
+  LPVOID NotificationFilter,
+  DWORD Flags);
+#endif
 
 /* local variables */
 static SDL_bool coinitialized = SDL_FALSE;

@@ -6,7 +6,7 @@
   "description": "Supporting headers and libraries to make it easy to build NME from source.",
   "version": "1.3.0",
   "releasenote": "release",
-  "binaryversion": "7",
+  "binaryversion": "8",
   "contributors": ["gamehaxe"],
   "dependencies": {}
 }
