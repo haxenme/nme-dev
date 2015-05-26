@@ -9,7 +9,7 @@ Common
 ------
 For fresh build, start with:
 ```
-cd build
+cd project
 neko build.n clean
 ```
 
