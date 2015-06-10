@@ -25,17 +25,13 @@ class Build extends hxcpp.Builder
       mkdir("bin");
       mkdir("unpack");
       mkdir("../include");
-      
-      if (emscripten)
-      {
-         buildFreetype("2.5.0.1");
-         return;
-      }
-      
       buildZ("1.2.3");
       buildPng("1.2.24");
-      buildJpeg("6b");
       buildFreetype("2.5.0.1");
+      buildJpeg("6b");
+      if (emscripten)
+         return;
+      
       buildCurl("7.35.0","1.4.4");
       buildOgg("1.3.0");
       buildVorbis("1.3.3");
@@ -226,6 +222,7 @@ class Build extends hxcpp.Builder
       var dir = 'unpack/freetype-$inVer';
       untar(dir,"freetype-" + inVer + ".tgz");
       copy("buildfiles/freetype.xml", dir);
+      copy('patches/freetype/aftypes.h', dir+"/src/autofit/aftypes.h");
       runIn(dir, "haxelib", ["run", "hxcpp", "freetype.xml" ].concat(buildArgs));
       copy('$dir/include/ft2build.h',"../include");
       copyRecursive('$dir/include/freetype',"../include/freetype");
