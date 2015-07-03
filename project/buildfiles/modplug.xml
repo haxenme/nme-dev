@@ -43,7 +43,7 @@
 
 
 
-<target id="default" output="${LIBPREFIX}modplug${DBG}${LIBEXTRA}" tool="linker" toolid="static_link">
+<target id="default" output="${LIBPREFIX}modplug${LIBEXTRA}" tool="linker" toolid="static_link">
   <files id="modplug"/>
   <outdir name="../../../lib/${BINDIR}"/>
 </target>

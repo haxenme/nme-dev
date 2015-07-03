@@ -82,7 +82,8 @@ int isblank(int ch)
 
 #pragma pack(1)
 
-typedef struct {
+struct PatchHeader {
+   PatchHeader() { memset(this, 0, sizeof(*this)); }
 	char header[12];	// ascizz GF1PATCH110
 	char gravis_id[10];	// allways ID#000002
 	char description[60];
@@ -93,25 +94,28 @@ typedef struct {
 	WORD master_volume;
 	DWORD data_size;
 	char reserved[36];
-} PatchHeader;
+};
 
-typedef struct {
+struct InstrumentHeader{
+   InstrumentHeader() { memset(this, 0, sizeof(*this)); }
 	WORD instrument_id;
 	char instrument_name[16];
 	DWORD instrument_size;
 	BYTE layers;
 	char reserved[40];
-} InstrumentHeader;
+};
 
-typedef struct {
+struct LayerHeader{
+   LayerHeader() { memset(this, 0, sizeof(*this)); }
 	BYTE layer_dup;
 	BYTE layer_id;
 	DWORD layer_size;
 	BYTE samples;
 	char reserved[40];
-} LayerHeader;
+};
 
-typedef struct {
+struct WaveHeader {
+   WaveHeader() { memset(this, 0, sizeof(*this)); }
 	char wave_name[7];
 	BYTE fractions;
 	DWORD wave_size;
@@ -135,7 +139,7 @@ typedef struct {
 	DWORD scale_frequency;
 	DWORD scale_factor;
 	char reserved[32];
-} WaveHeader;
+};
 
 // WaveHeader.modes bits
 #define PAT_16BIT     1
@@ -164,14 +168,16 @@ static BYTE pat_loops[MAXSMP];
 /**************************************************************************
 **************************************************************************/
 
-typedef struct _PATHANDLE
+struct PATHANDLE
 {
+   PATHANDLE() { memset(this, 0, sizeof(*this)); }
+
 #ifdef NEWMIKMOD
 	MM_ALLOC *allochandle;
 #endif
 	char patname[16];
 	int samples;
-} PATHANDLE;
+};
 
 #ifndef HAVE_SINF
 static inline float sinf(float x) {
