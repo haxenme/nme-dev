@@ -205,7 +205,7 @@
       <file name="src/video/SDL_stretch.c"/>
       <file name="src/stdlib/SDL_string.c"/>
       <file name="src/video/SDL_surface.c"/>
-      <file name="src/thread/generic/SDL_syscond.c"/>
+      <file name="src/thread/generic/SDL_syscond.c" if="windows" />
      <file name="src/thread/SDL_thread.c"/>
       <file name="src/timer/SDL_timer.c"/>
       <file name="src/events/SDL_touch.c"/>

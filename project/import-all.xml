@@ -1,0 +1,15 @@
+<xml>
+
+  <import name="snapshot/freetype-2.5.0.1/freetype.xml" />
+  <import name="snapshot/curl-7.35.0/curl.xml" />
+  <import name="snapshot/jpeg-6b/jpeg.xml" />
+  <import name="snapshot/libmodplug-0.8.8.4/modplug.xml" />
+  <import name="snapshot/libogg-1.3.0/ogg.xml" />
+  <import name="snapshot/libpng-1.2.24/png.xml" />
+  <import name="snapshot/libtheora-1.1.1/theora.xml" />
+  <import name="snapshot/libvorbis-1.3.3/vorbis.xml" />
+  <import name="snapshot/SDL2-2.0.3/sdl2.xml" />
+  <import name="snapshot/SDL2_mixer-2.0.0/sdl2_mixer.xml" />
+  <import name="snapshot/zlib-1.2.3/zlib.xml" />
+
+</xml>
