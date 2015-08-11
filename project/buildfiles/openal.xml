@@ -1,6 +1,6 @@
 <xml>
 
-<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+<include name="${HXCPP}/build-tool/BuildCommon.xml" unless="build_common_included" />
 
 <files id="openal" >
    <compilerflag value="-I../../../include" />
@@ -8,6 +8,8 @@
    <compilerflag value="-Iinclude/." />
    <compilerflag value="-I." />
    <compilerflag value="-DAL_LIBTYPE_STATIC" />
+
+   <cache value="1" />
 
    <section if="linux">
       <compilerflag value="-DLIBTYPE=STATIC" />

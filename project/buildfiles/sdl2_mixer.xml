@@ -1,6 +1,6 @@
 <xml>
 
-<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+<include name="${HXCPP}/build-tool/BuildCommon.xml" unless="build_common_included" />
 
 <files id="sdl2_mixer" >
    <compilerflag value="-Iinclude" />
@@ -15,6 +15,7 @@
    <compilerflag value="-DWAV_MUSIC" />
    <compilerflag value="-DUSE_NATIVE_MIDI" unless="linux" />
 
+   <cache value="1" />
    <file name="effect_position.c"  />
    <file name="effect_stereoreverse.c" />
    <file name="music_ogg.c" />

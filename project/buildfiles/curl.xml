@@ -1,6 +1,6 @@
 <xml>
 
-<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+<include name="${HXCPP}/build-tool/BuildCommon.xml" unless="build_common_included" />
 
 <section if="curl_ssl">
    <set name="OBJ_EXT" value="${OBJ_EXT}-ssl" />
@@ -23,6 +23,7 @@
    <compilerflag value="-DFD_SETSIZE=64" if="blackberry"/>
    <compilerflag value="-DUSE_AXTLS=1" if="curl_ssl" />
 
+   <cache value="1" />
    <section if="windows">
       <!--<file name="lib/hostthre.c"/>-->
      <file name="lib/strtok.c"/>

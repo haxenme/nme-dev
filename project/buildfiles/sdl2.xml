@@ -1,12 +1,13 @@
 <xml>
 
-<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+<include name="${HXCPP}/build-tool/BuildCommon.xml" unless="build_common_included" />
 
 <files id="sdl2" >
    <compilerflag value="-Iinclude" />
    <compilerflag value="-Ilib" />
    <compilerflag value="-I../../../include" />
    <compilerflag value="-DHAVE_LIBC" />
+   <cache value="1" />
 
    <section if="linux">
       <compilerflag value="-I../../../include/xcompile" />

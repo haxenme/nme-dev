@@ -1,11 +1,13 @@
 <xml>
 
-<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+<include name="${HXCPP}/build-tool/BuildCommon.xml" unless="build_common_included" />
 
 <files id="freetype" >
    <compilerflag value="-Iinclude" />
    <compilerflag value="-DFT2_BUILD_LIBRARY" />
    <compilerflag value="-DDARWIN_NO_CARBON" />
+
+   <cache value="1" />
 
       <file name="src/autofit/autofit.c"/>
       <file name="src/bdf/bdf.c"/>

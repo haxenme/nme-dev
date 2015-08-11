@@ -1,11 +1,12 @@
 <xml>
 
-<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+<include name="${HXCPP}/build-tool/BuildCommon.xml" unless="build_common_included" />
 
 <files id="vorbis" >
    <compilerflag value="-Iinclude" />
    <compilerflag value="-Ilib" />
    <compilerflag value="-I../../../include" />
+   <cache value="1" />
    <file name="lib/mdct.c"/>
    <file name="lib/smallft.c"/>
    <file name="lib/block.c"/>

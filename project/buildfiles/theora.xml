@@ -1,12 +1,13 @@
 <xml>
 
-<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+<include name="${HXCPP}/build-tool/BuildCommon.xml" unless="build_common_included" />
 
 <files id="theora" >
    <compilerflag value="-Iinclude" />
    <compilerflag value="-Ilib" />
    <compilerflag value="-I../../../include" />
 
+   <cache value="1" />
    <file name="lib/analyze.c"/>
    <file name="lib/apiwrapper.c"/>
    <file name="lib/bitpack.c"/>

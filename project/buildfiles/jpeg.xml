@@ -1,9 +1,11 @@
 <xml>
 
-<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+<include name="${HXCPP}/build-tool/BuildCommon.xml" unless="build_common_included" />
 
 <files id="jpeg" >
    <compilerflag value="-I../../../include" />
+   <cache value="1" />
+
    <file name="jcapimin.c"/>
    <file name="jcapistd.c"/>
    <file name="jctrans.c"/>

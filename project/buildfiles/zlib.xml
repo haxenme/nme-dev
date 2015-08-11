@@ -1,8 +1,9 @@
 <xml>
 
-<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+<include name="${HXCPP}/build-tool/BuildCommon.xml" unless="build_common_included" />
 
 <files id="zlib" >
+   <cache value="1" />
   <file name="adler32.c"/>
   <file name="crc32.c"/>
   <file name="infback.c"/>

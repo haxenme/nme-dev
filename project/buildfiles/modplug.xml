@@ -1,11 +1,14 @@
 <xml>
 
-<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+<include name="${HXCPP}/build-tool/BuildCommon.xml" unless="build_common_included" />
 
 <files id="modplug" >
    <compilerflag value="-Isrc/libmodplug" />
    <compilerflag value="-Isrc" />
    <compilerflag value="-DHAVE_CONFIG_H" />
+
+   <cache value="1" />
+
    <file name="src/modplug.cpp" />
    <file name="src/sndmix.cpp" />
    <file name="src/load_med.cpp" />
