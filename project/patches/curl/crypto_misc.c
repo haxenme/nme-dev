@@ -59,6 +59,13 @@ static uint8_t entropy_pool[ENTROPY_POOL_SIZE];
 static int rng_ref_count;
 const char * const unsupported_str = "Error: Feature not supported\n";
 
+#ifdef ANDROID
+#define rand lrand48
+#define srand srand48
+#endif
+
+
+
 #ifndef CONFIG_SSL_SKELETON_MODE
 /** 
  * Retrieve a file and put it into memory

@@ -223,6 +223,7 @@ class Build extends hxcpp.Builder
       untar(dir,"freetype-" + inVer + ".tgz");
       copy("buildfiles/freetype.xml", dir);
       copy('patches/freetype/aftypes.h', dir+"/src/autofit/aftypes.h");
+      copy('patches/freetype/ftrfork.c', dir+"/src/base/ftrfork.c");
       runIn(dir, "haxelib", ["run", "hxcpp", "freetype.xml" ].concat(buildArgs));
       copy('$dir/include/ft2build.h',"../include");
       copyRecursive('$dir/include/freetype',"../include/freetype");
@@ -247,6 +248,7 @@ class Build extends hxcpp.Builder
 
 
       copy("configs/curl_config.gcc", dir+"/lib/curl_config.h");
+      copy("patches/curl/transfer.c", dir+"/lib/transfer.c");
       copy("patches/curl/curlbuild.h", dir+"/include/curl");
       copy("buildfiles/curl.xml", dir);
       runIn(dir, "haxelib", ["run", "hxcpp", "curl.xml", "-Dcurl_ssl" ].concat(buildArgs));
