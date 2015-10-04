@@ -4,9 +4,9 @@
   "license": "MIT",
   "tags": ["nme", "library"],
   "description": "Supporting headers and libraries to make it easy to build NME from source.",
-  "version": "1.4.0",
+  "version": "5.5.0",
   "releasenote": "release",
-  "binaryversion": "10",
+  "binaryversion": "11",
   "contributors": ["gamehaxe"],
   "dependencies": {}
 }
